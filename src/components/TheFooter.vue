@@ -49,6 +49,13 @@ export default {
                     "DC Power Vista"
                 ]
             }
+        ],
+        followUsLinks: [
+            "fa-brands fa-facebook-f",
+            "fa-brands fa-twitter",
+            "fa-brands fa-youtube",
+            "fa-brands fa-pinterest-p",
+            "fa-solid fa-location-dot"
         ]
     }
 }}
@@ -57,39 +64,100 @@ export default {
 
 <template>
     <footer>
-        <ul class="links-wrapper">
-            <li v-for="(element, index) in foorterLiks">
-                {{element.name}}
+        <div class="container">
+            <ul class="links-wrapper">
+                <li class="list-name" v-for="element in foorterLiks">
+                    {{element.name}}
+                    <ul>
+                        <li v-for="link in element.links">
+                            <a class="links" href="#">{{ link }}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="bottom-footer">
+            <div class="container">
+                <button class="sign-up">SIGN-UP NOW</button>
                 <ul>
-                    <li v-for="link in foorterLiks.links">{{ link }}</li>
+                    <li>FOOLOW US</li>
+                    <li v-for="element in followUsLinks" :key="element"><i :class="element"></i></li>
                 </ul>
-            </li>
-        </ul>
+            </div>
+        </div>
     </footer>
 </template>
 
 
 
 <style scoped lang="scss">
+@use "../style/partials/variables" as *;
 @use "../style/partials/mixins";
 
+
+    .container{
+        @include mixins.d-flex;
+        @include mixins.container;
+        justify-content: space-between;
+    }
     footer{
         background-image: url(../assets/footer-bg.jpg);
-        height: 370px;
-        padding: 20px 50px;
+        height: 500px;
+        background-size: cover;
+        position: relative
     }
 
     .links-wrapper{
         @include mixins.d-flex;
+        flex-direction: column;
         list-style: none;
+        flex-wrap: wrap;
+        height: 400px;
         
 
-        li{
+        .list-name{
             color: white;
-            padding: 0 25px 35px;
+            padding: 0 55px 35px 0;
             font-weight: bolder;
             font-size: 25px;
         }
+        ul{
+            list-style: none;
+            .links{
+                text-decoration: none;
+                color:gray;
+                font-size: 14px;
+            }
+        }
     }
+    .bottom-footer{
+        height: 100px;
+        width: 100%;
+        background-color: $bottom-footer-color;
+        
+        .container{
+            align-items: center;
+            height: 100%;
+        }
 
+        .sign-up{
+            background-color: transparent;
+            padding: 12px 18px;
+            border: 3px solid $primary-color;
+            color: white;
+            font-size: 18px;
+        }
+
+        ul{
+                display: flex;
+                list-style: none;
+
+                li{
+                    padding: 10px;
+                    background-color: white;
+                    border-radius: 50%;
+                    color :red;
+                }
+            }        
+    }
 </style>
