@@ -42,8 +42,9 @@ export default {
 @use "../style/partials/mixins";
 
 header{
+    @include mixins.container;
     @include mixins.d-flex-a-center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     height: 170px;
 }
 
