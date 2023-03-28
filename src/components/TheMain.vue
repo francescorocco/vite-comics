@@ -1,6 +1,11 @@
 <script>
+import PersonalCard from './PersonalCard.vue'
+
 export default {
   name: "TheMain",
+  components: {
+    PersonalCard
+  },
     data() {
       return {
         seriesList:[
@@ -85,7 +90,9 @@ export default {
 <template>
     <main>
         <div class="container">
-            <PersonaCard :seriesList="seriesList"/>
+            <div v-for="(element, index) in seriesList" class="card-wrapper" :key="index">
+                <PersonalCard :image="element.thumb" :name="element.series"/>
+            </div>
         </div>
     </main>
 </template>
@@ -98,6 +105,17 @@ export default {
 
     main{
         background-color: black;
-        height: 300px;
+    }
+
+    .container{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 50px 0 ;
+
+        .card-wrapper{
+            width: calc(100% / 6 - 5px);
+            margin: 30px 0;
+        }
     }
 </style>
