@@ -90,32 +90,57 @@ export default {
 <template>
     <main>
         <div class="container">
+            <button class="btn-current-series">Current Series</button>
             <div v-for="(element, index) in seriesList" class="card-wrapper" :key="index">
                 <PersonalCard :image="element.thumb" :name="element.series"/>
             </div>
         </div>
+        
+        <button class="btn-leade-more">Lead More</button>
+
     </main>
 </template>
 
 <style scoped lang="scss">
 @use "../style/partials/mixins";
+@use "../style/partials/variables" as *;
+
     .container{
-        @include mixins.container
+        @include mixins.container;
+        position: relative;
+        
     }
 
     main{
         background-color: black;
+        text-align: center;
     }
 
     .container{
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        padding: 50px 0 ;
+        padding: 50px 0 150px 0;
 
         .card-wrapper{
             width: calc(100% / 6 - 5px);
             margin: 30px 0;
         }
     }
+    button {
+    background-color: $primary-color;
+    border: none;
+    padding: 10px 39px;
+    font-size: 18px;
+    color: white;
+    margin-bottom: 30px;
+    }
+
+    .btn-current-series{
+    position: absolute;
+    left: -1%;
+    top: -4%;
+    font-size: 30px;
+    font-weight: 800;
+}
 </style>

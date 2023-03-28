@@ -1,14 +1,19 @@
   <script>
     import TheHeader from "./components/TheHeader.vue";
-    import TheFooter from "./components/TheFooter.vue";
+    import TheJumbotron from "./components/TheJumbotrone.vue";
     import TheMain from "./components/TheMain.vue";
+    import MyInformationBar from "./components/MyInformationBar.vue";
+    import TheFooter from "./components/TheFooter.vue";
+
 
 
     export default{
       components:{
         TheHeader,
-        TheFooter,
-        TheMain
+        TheJumbotron,
+        TheMain,
+        MyInformationBar,
+        TheFooter
       }
     }
   </script>
@@ -17,7 +22,11 @@
 
   <TheHeader/>
 
+  <TheJumbotron/>
+
   <TheMain/>
+
+  <MyInformationBar/>
 
   <TheFooter/>
 </template>
